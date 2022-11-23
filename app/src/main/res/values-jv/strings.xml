@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MusicPlayerItune</string>
+
+    <string name="album_art">Album Seni</string>
+    <string name="music_note">Chatetan Musik</string>
+    <string name="blue_background">Latar Biru</string>
+    <string name="warning_no_data">Data ora ditemokake.</string>
+    <string name="error_fetching_api">Data ora ditemokake.</string>
+    <string name="play">Mainkan Lagu</string>
+    <string name="title_favorite">favorit sampeyan</string>
+    <string name="love_this">Kaya iki</string>
+    <string name="search_song_here">Telusuri lagu ing kene …</string>
+    <string name="your_favorite">+ Favorit sampeyan</string>
+    <string name="background">Latar mburi</string>
+    <string name="error_toast">Nuwun sewu, ana kesalahan. \nMangga ketik lagu liyane</string>
+    <string name="empty_toast">Nuwun sewu, lagu iki ora kasedhiya</string>
+    <string name="settings">Tatanan</string>
+</resources>
