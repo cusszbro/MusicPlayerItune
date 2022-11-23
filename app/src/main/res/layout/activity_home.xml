@@ -16,13 +16,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/ib_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_sharp_settings"
+        android:backgroundTint="@color/blue_variant_accent"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/settings"
+        app:layout_constraintTop_toTopOf="@id/iv_toolbar_background"
+        app:layout_constraintEnd_toEndOf="@id/iv_toolbar_background"/>
+
     <EditText
         android:id="@+id/et_search"
         android:textSize="12sp"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/bg_radius_8dp"
         android:hint="@string/search_song_here"
         android:importantForAutofill="no"

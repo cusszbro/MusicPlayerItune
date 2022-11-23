@@ -4,8 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_variant_accent"
     tools:context=".detail.DetailActivity">
+
+    <ImageView
+        android:id="@+id/iv_background_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@color/blue_variant_accent"/>
 
     <ImageView
         android:id="@+id/iv_album_art_detail"
@@ -22,6 +32,7 @@
         android:id="@+id/tv_song_name_detail"
         android:textSize="18sp"
         android:textStyle="bold"
+        style="@android:style/TextAppearance"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="12dp"
@@ -36,12 +47,13 @@
     <TextView
         android:id="@+id/tv_song_artist_detail"
         android:textSize="16sp"
+        style="@android:style/TextAppearance"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="12dp"
         android:layout_marginTop="4dp"
         android:ellipsize="end"
-        android:maxLines="1"
+        android:maxLines="2"
         app:layout_constraintStart_toStartOf="@id/iv_album_art_detail"
         app:layout_constraintEnd_toEndOf="@id/iv_album_art_detail"
         app:layout_constraintTop_toBottomOf="@id/tv_song_name_detail"
@@ -50,6 +62,7 @@
     <TextView
         android:id="@+id/tv_song_album_detail"
         android:textSize="11sp"
+        style="@android:style/TextAppearance"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="12dp"
@@ -64,6 +77,7 @@
     <TextView
         android:id="@+id/tv_song_genre_detail"
         android:textSize="11sp"
+        style="@android:style/TextAppearance"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="12dp"
@@ -78,6 +92,7 @@
     <TextView
         android:id="@+id/tv_song_release_detail"
         android:textSize="11sp"
+        style="@android:style/TextAppearance"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="12dp"

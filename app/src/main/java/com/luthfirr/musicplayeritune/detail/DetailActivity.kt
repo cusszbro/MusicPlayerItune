@@ -33,9 +33,8 @@ class DetailActivity : AppCompatActivity() {
 
         val detailMusic = intent.getParcelableExtra<Music>(EXTRA_DATA)
 
-        //init setup view
         setupView()
-        //ini detail music
+
         showDetailMusic(detailMusic)
 
     }
@@ -55,6 +54,10 @@ class DetailActivity : AppCompatActivity() {
 
     private fun showDetailMusic(detailMusic: Music?) {
         detailMusic?.let {
+            Glide.with(this@DetailActivity)
+                .load(detailMusic.artworkUrl100)
+                .centerCrop()
+                .into(binding.ivBackgroundDetail)
             Glide.with(this@DetailActivity)
                 .load(detailMusic.artworkUrl100)
                 .into(binding.ivAlbumArtDetail)
@@ -84,9 +87,6 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Playing selected music
-     */
     private fun playSelectedMusic(music: Music) {
 
         // init music player
@@ -118,9 +118,6 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Set state of media control
-     */
     private fun setMediaControlState(music: Music? = null) {
         with(binding) {
             if (this@DetailActivity::mediaPlayer.isInitialized) {
@@ -140,10 +137,6 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Pause current playing music by checking
-     * the initialization and current state of mediaPlayer.
-     */
     private fun pauseCurrentPlayingMusic() {
         if (this::mediaPlayer.isInitialized) {
             if (mediaPlayer.isPlaying) {
@@ -158,8 +151,8 @@ class DetailActivity : AppCompatActivity() {
         setMediaControlState()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onStop() {
+        super.onStop()
         pauseCurrentPlayingMusic()
         setMediaControlState()
     }

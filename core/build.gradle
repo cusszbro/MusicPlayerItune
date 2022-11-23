@@ -14,6 +14,10 @@ android {
         minSdk 21
         targetSdk 32
         buildConfigField("String", "BASEURL", '"https://itunes.apple.com/"')
+        buildConfigField("String", "HOSTNAME", '"itunes.apple.com"')
+        buildConfigField("String", "CERT1", '"sha256/CPB+ZtbOM2jdGjeUTTf8FFCxwpZwUzL/CjiTwtBx0TE="')
+        buildConfigField("String", "CERT2", '"sha256/4ZMBBKlWyhpdsKqKnbXEkuo4CnSxw6b7svlcKIJWfEA="')
+        buildConfigField("String", "CERT3", '"sha256/WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18="')
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -59,9 +63,14 @@ dependencies {
     //Networking libraries
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
-    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
 
     api "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+
+    //SQLChiper
+    implementation "net.zetetic:android-database-sqlcipher:4.4.0"
+    implementation "androidx.sqlite:sqlite-ktx:2.2.0"
+
 }

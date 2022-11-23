@@ -10,5 +10,9 @@
     <string name="title_favorite">Your Favorite</string>
     <string name="love_this">love this</string>
     <string name="search_song_here">Search song here …</string>
-    <string name="your_favorite">+ your favorite</string>
+    <string name="your_favorite">+ Your Favorite</string>
+    <string name="background">Background</string>
+    <string name="error_toast">Sorry, it must be an error \nPlease input another song</string>
+    <string name="empty_toast">Sorry, this song is an empty</string>
+    <string name="settings">Settings</string>
 </resources>

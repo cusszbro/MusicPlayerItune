@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
@@ -32,19 +33,16 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //init setup view
         setupView()
 
-        //init move to favorite
+        setupLocal()
+
         moveToFavorite()
 
-        // init adapter
         adapter = MusicAdapter()
 
-        // init search event listener
         setSearchEventListener()
 
-        // init swipe refresh event listener
         setSwipeRefreshEventListener()
     }
 
@@ -61,21 +59,18 @@ class HomeActivity : AppCompatActivity() {
         supportActionBar?.hide()
     }
 
-    /**
-     * set fab intent to favorite music fragment
-     */
+    private fun setupLocal() {
+        binding.ibSettings.setOnClickListener {
+            startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+        }
+    }
+
     private fun moveToFavorite() {
         binding.fabFavorite.setOnClickListener {
             startActivity(Intent(this, Class.forName("com.luthfirr.favorite.FavoriteActivity")))
         }
     }
 
-    /**
-     * Set the listener of search edit text so it will
-     * call the Api when there's an update in the edit text
-     * and have 1500ms debounce.
-     * Also stop the current playing music when searching.
-     */
     @OptIn(ExperimentalCoroutinesApi::class, FlowPreview::class)
     private fun setSearchEventListener() {
         binding.etSearch.textChanges()
@@ -95,9 +90,6 @@ class HomeActivity : AppCompatActivity() {
             .launchIn(lifecycleScope)
     }
 
-    /**
-     * Call getMusicListByArtist when swiping the layout
-     */
     private fun setSwipeRefreshEventListener() {
         with(binding) {
             swipeProgress.setOnRefreshListener {
@@ -106,9 +98,6 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Observe live data of music response that returned from view model
-     */
     private fun getMusicListByArtist(artist: String) {
         if (checkSearchValue(artist)) {
             homeViewModel.getMusicListByArtist(artist).observe(this) {
@@ -116,7 +105,6 @@ class HomeActivity : AppCompatActivity() {
                         when (music) {
                             is Resource.Loading -> {
                                 setLoadingStateCondition(true)
-                                Toast.makeText(this, "Wait a second", Toast.LENGTH_SHORT).show()
                             }
                             is Resource.Success -> {
                                 music.data?.let { data ->
@@ -125,11 +113,11 @@ class HomeActivity : AppCompatActivity() {
                             }
                             is Resource.Error -> {
                                 setErrorStateCondition()
-                                Toast.makeText(this, "Sorry, it must be an error \\nPlease input another song", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, getString(R.string.error_toast), Toast.LENGTH_SHORT).show()
                             }
                             else -> {
                                 setEmptyStateCondition()
-                                Toast.makeText(this, "Sorry, this song is an empty", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, getString(R.string.empty_toast), Toast.LENGTH_SHORT).show()
                             }
                         }
                 }
@@ -137,10 +125,6 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Check the state of search value.
-     * Will call empty state condition and return false when the value is empty
-     */
     private fun checkSearchValue(value: String): Boolean {
         if (value.isEmpty()) {
             setEmptyStateCondition()
@@ -149,9 +133,6 @@ class HomeActivity : AppCompatActivity() {
         return true
     }
 
-    /**
-     * Show swipe refresh loading state based on isLoading parameter
-     */
     private fun setLoadingStateCondition(isLoading: Boolean) {
         with(binding) {
             swipeProgress.isRefreshing = isLoading
@@ -163,10 +144,6 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Set adapter list data and assign it into the recyclerview
-     * then show to the layout.
-     */
     private fun setSuccessStateCondition(data: List<Music>) {
         setLoadingStateCondition(false)
 
@@ -186,9 +163,6 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Hiding the recyclerview and show the text empty info
-     */
     private fun setEmptyStateCondition() {
         setLoadingStateCondition(false)
 
@@ -199,9 +173,6 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Hiding the recyclerview and show the text error info
-     */
     private fun setErrorStateCondition() {
         setLoadingStateCondition(false)
 

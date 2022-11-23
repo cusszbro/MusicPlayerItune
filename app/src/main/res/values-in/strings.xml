@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MusicPlayerItune</string>
+
+    <string name="album_art">Album Seni</string>
+    <string name="music_note">Not Musik</string>
+    <string name="blue_background">Latar Biru</string>
+    <string name="warning_no_data">Data tidak ditemukan.</string>
+    <string name="error_fetching_api">Terjadi masalah saat terhubung ke server.</string>
+    <string name="play">Mainkan Lagu</string>
+    <string name="title_favorite">Favoritmu</string>
+    <string name="love_this">Sukai ini</string>
+    <string name="search_song_here">Cari lagu disini …</string>
+    <string name="your_favorite">+ Favoritmu</string>
+    <string name="background">Latar</string>
+    <string name="error_toast">Maaf, Sedang terjadi error \nSilahkan masukan lagu yang lain</string>
+    <string name="empty_toast">Maaf, Lagu ini tidak tersedia</string>
+    <string name="settings">Pengaturan</string>
+</resources>

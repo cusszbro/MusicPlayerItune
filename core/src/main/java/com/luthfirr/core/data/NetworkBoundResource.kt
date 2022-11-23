@@ -1,6 +1,5 @@
 package com.luthfirr.core.data
 
-import android.util.Log
 import com.luthfirr.core.data.source.remote.network.ApiResponse
 import com.luthfirr.core.data.source.remote.response.MusicResult
 import kotlinx.coroutines.flow.*
@@ -27,11 +26,8 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
                 is ApiResponse.Error -> {
                     onFetchFailed()
                     emit(
-                        Resource.Error<ResultType>(apiResponse.errorMessage)
+                        Resource.Error(apiResponse.errorMessage)
                     )
-                }
-                else -> {
-                    Log.e("Network bound resource", "nothing")
                 }
             }
         } else {

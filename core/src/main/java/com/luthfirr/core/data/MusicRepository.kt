@@ -21,9 +21,7 @@ class MusicRepository(
         object : NetworkBoundResource<List<Music>, List<MusicResult>>() {
 
 
-            override fun shouldFetch(data: List<Music>?): Boolean =
-//                data == null || data.isEmpty()
-                true // ganti dengan true jika ingin selalu mengambil data dari internet
+            override fun shouldFetch(data: List<Music>?): Boolean = true
 
             override suspend fun createCall(): Flow<ApiResponse<List<MusicResult>?>> {
                 return remoteDataSource.getAllMusic(artist)
